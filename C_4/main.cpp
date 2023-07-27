@@ -22,6 +22,12 @@ int main() {
     }
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
+            cout << a[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
             if (
                 (i == 0) 
                 && (j == 0)
@@ -91,7 +97,7 @@ int main() {
                 && (a[i][j] < a[i-1][j-1])
                 && (a[i][j] < a[i-1][j])
                 && (a[i][j] < a[i-1][j+1])
-            ) {k++}
+            ) { k++; }
         }
     }
     for (int i = 0; i < n; i++) {
@@ -101,7 +107,7 @@ int main() {
             }
         }
     }
-    cout << endl; << "Answers: ";
+    cout << endl << "Answers: ";
     cout << k << endl;
     cout << x << endl;
     return 0;
