@@ -1,5 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
+#include "my_lib.h"
+#include "opr_matrix.h"
 
 using namespace std;
 
@@ -58,7 +60,7 @@ long long get_x(long long a[n][n], long long b[n], long long delta, int x)
     {
         for (int j = 0; j < n; j++)
         {
-            if (long long(j) == x) 
+            if (j == x) 
             {
                 c[i][j] = b[i];
             }
@@ -68,15 +70,15 @@ long long get_x(long long a[n][n], long long b[n], long long delta, int x)
             }
         }
     }
-    long long new_delta = get_opr_matrix_3_3(c);
+    long long new_delta = get_opr_matrix(c);
     return (new_delta / delta);
 }
 
 int main()
 {
-    int a[n][n];
+    long long a[n][n], b[n], c[n], d[m][m], e[5][5];
     add_array(a);
     print_array(a);
-    cout << get_opr_matrix_3_3(a) << endl;
+    cout << get_opr_matrix(a) << endl;
     return 0;
 }
