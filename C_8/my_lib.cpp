@@ -5,26 +5,38 @@ using namespace std;
 
 int const n = 3;
 
-void add_array(int a[n])
+void multiply_array(double a[n][n], double b[n], double c[n])
 {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) 
     {
-        a[i] = rand() % 90 + 10;
+        c[i] = 0;
+        for (int j = 0; j < n; j++) 
+        {
+            c[i] += a[i][j] * b[j];
+        }
     }
 }
 
-void add_array(int a[n][n])
+void add_array(double a[n])
+{
+    for (int i = 0; i < n; i++)
+    {
+        a[i] = double(rand() % 90 + 10);
+    }
+}
+
+void add_array(double a[n][n])
 {
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < n; j++)
         {
-            a[i][j] = rand() % 90 + 10;
+            a[i][j] = double(rand() % 90 + 10);
         }        
     }
 }
 
-void print_array(int a[n]) {
+void print_array(double a[n]) {
     for (int i = 0; i < n; i++)
     {
         cout << a[i] << "\t";
@@ -32,7 +44,7 @@ void print_array(int a[n]) {
     cout << endl;
 }
 
-void print_array(int a[n][n])
+void print_array(double a[n][n])
 {
     for (int i = 0; i < n; i++)
     {
