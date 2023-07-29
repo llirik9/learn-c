@@ -1,0 +1,10 @@
+void add_array(long long*);
+void multiply_array(long long (*)[3], long long*, long long*);
+void add_array(long long (*)[3]);
+void add_array(long long (*)[4]);
+void add_array(long long (*)[5]);
+void print_array(long long (*)[3]);
+void print_array(long long (*)[4]);
+void print_array(long long (*)[5]);
+void print_array(long long*);
+int my_pow(int, int);
