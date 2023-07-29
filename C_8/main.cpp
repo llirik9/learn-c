@@ -1,7 +1,5 @@
 #include <iostream>
 #include <stdlib.h>
-#include "my_lib.h"
-#include "opr_matrix.h"
 
 using namespace std;
 
@@ -20,6 +18,39 @@ void init_arrays(long long a[n][n], long long b[n], long long d[m][m], long long
     print_array(e);
 }
 
+void add_array(int a[n][n])
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            a[i][j] = rand() % 90 + 10;
+        }
+    }
+}
+
+void print_array(int a[n][n])
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            cout << a[i][j] << "\t";
+        }
+        cout << endl;
+    }
+    cout << endl;
+}
+
+int get_opr_matrix_3_3(int a[3][3]) {
+    return a[0][0] * a[1][1] * a[2][2]
+        + a[0][1] * a[1][2] * a[2][0]
+        + a[0][2] * a[1][0] * a[2][1]
+        - a[0][2] * a[1][1] * a[2][0]
+        - a[0][1] * a[1][0] * a[2][2]
+        - a[0][0] * a[1][2] * a[2][1];
+}
+
 long long get_x(long long a[n][n], long long b[n], long long delta, int x)
 {
     long long c[n][n];
@@ -27,7 +58,7 @@ long long get_x(long long a[n][n], long long b[n], long long delta, int x)
     {
         for (int j = 0; j < n; j++)
         {
-            if (j == x)
+            if (long long(j) == x) 
             {
                 c[i][j] = b[i];
             }
@@ -37,26 +68,15 @@ long long get_x(long long a[n][n], long long b[n], long long delta, int x)
             }
         }
     }
-    long long new_delta = get_opr_matrix(c);
+    long long new_delta = get_opr_matrix_3_3(c);
     return (new_delta / delta);
-}
-
-void get_x_3(long long x[3], long long a[n][n], long long b[n], long long delta)
-{
-    for (int i = 0; i < 3; i++)
-    {
-        x[i] = get_x(a, b, delta, i);
-    }
 }
 
 int main()
 {
-    long long a[n][n], b[n], c[n], d[m][m], e[5][5], x[n];
-    init_arrays(a, b, d, e);
-    cout << get_opr_matrix(e) << endl << endl;
-    //get_x_3(x, a, b, get_opr_matrix(a));
-    //cout << get_opr_matrix(d) << endl << endl;
-    //multiply_array(a, x, c);
-    //print_array(c);
+    int a[n][n];
+    add_array(a);
+    print_array(a);
+    cout << get_opr_matrix_3_3(a) << endl;
     return 0;
 }

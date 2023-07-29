@@ -115,4 +115,3 @@ void print_array(long long a[5][5])
     }
     cout << endl;
 }
-#include <iostream>
